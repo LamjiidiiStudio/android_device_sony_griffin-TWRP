@@ -55,6 +55,12 @@ QCOM_BOARD_PLATFORMS += msmnile
 # Partition information
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4362076160
+BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
+BOARD_ODMIMAGE_PARTITION_SIZE := 419430400
+# Reserve space for data encryption (114994110464-16384)
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 114994094080
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -80,3 +86,18 @@ BOARD_USES_RECOVERY_AS_BOOT := true
 
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
+
+# A/B updater updatable partitions list. Keep in sync with the partition list
+# with "_a" and "_b" variants in the device. Note that the vendor can add more
+# more partitions to this list for the bootloader and radio.
+AB_OTA_PARTITIONS += \
+    boot \
+    system \
+    product \
+    vendor \
+    vbmeta_system
+
+# tell update_engine to not change dynamic partition table during updates
+# needed since our qti_dynamic_partitions does not include
+# vendor and odm and we also dont want to AB update them
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
