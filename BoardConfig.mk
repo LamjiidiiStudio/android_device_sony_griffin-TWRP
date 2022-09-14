@@ -68,6 +68,14 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_SUPER_PARTITION_SIZE := 12884901888
+BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6438256640
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
+    system \
+    vendor \
+    product
+
 # Reserve space for data encryption (109553123000-16384)
 BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 52428800
 BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 52428800
@@ -87,6 +95,27 @@ TARGET_NO_KERNEL := false
 TARGET_NO_RECOVERY := true
 BOARD_USES_RECOVERY_AS_BOOT := true
 
+# TWRP specific build flags
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_EXCLUDE_SUPERSU := true
+TW_EXTRA_LANGUAGES := true
+TW_INCLUDE_NTFS_3G := true
+AB_OTA_UPDATER := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_MAX_BRIGHTNESS := 1023
+TW_DEFAULT_BRIGHTNESS := 420
+TW_THEME := portrait_hdpi
+TARGET_RECOVERY_DEVICE_MODULES += android.hardware.boot@1.0
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
+TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
+TW_NO_SCREEN_BLANK := true
+TW_USE_TOOLBOX := true
+TW_HAS_DOWNLOAD_MODE := true
+
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
 
@@ -95,10 +124,10 @@ TARGET_USES_MKE2FS := true
 # more partitions to this list for the bootloader and radio.
 AB_OTA_PARTITIONS += \
     boot \
+	dtbo \
     system \
-    product \
     vendor \
-    vbmeta_system
+    vbmeta
 
 # tell update_engine to not change dynamic partition table during updates
 # needed since our qti_dynamic_partitions does not include
