@@ -82,7 +82,7 @@ BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 52428800
 BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 52428800
 
 # Partitions (listed in the file) to be wiped under recovery.
-TARGET_RECOVERY_WIPE := $(LOCAL_PATH)/rootdir/recovery.wipe
+TARGET_RECOVERY_WIPE := $(LOCAL_PATH)/recovery.wipe
 
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
