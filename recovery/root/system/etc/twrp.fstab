@@ -16,7 +16,6 @@
 # AVB partitions
 /dtbo			emmc	/dev/block/bootdevice/by-name/dtbo									flags=slotselect;display="DTBO";backup=1;flashimg=1
 /vbmeta			emmc	/dev/block/bootdevice/by-name/vbmeta								flags=slotselect;display="VBMeta";backup=1;flashimg=1
-/vbmeta_system	emmc	/dev/block/bootdevice/by-name/vbmeta_system							flags=slotselect;display="VBMeta System";backup=1;flashimg=1
 
 
 /super      emmc    /dev/block/bootdevice/by-name/super        flags=display="Super";backup=1;flashimg=1

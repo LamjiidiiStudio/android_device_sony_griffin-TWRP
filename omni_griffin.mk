@@ -17,7 +17,7 @@
 # Release name
 PRODUCT_RELEASE_NAME := griffin
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_minimal.mk)
+$(call inherit-product, build/target/product/embedded.mk)
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
@@ -29,13 +29,20 @@ $(call inherit-product, device/sony/griffin/device.mk)
 PRODUCT_DEVICE := griffin
 PRODUCT_NAME := omni_griffin
 PRODUCT_BRAND := Sony
-PRODUCT_MODEL := Xperia 1
+PRODUCT_MODEL := J9110
 PRODUCT_MANUFACTURER := Sony
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=griffin \
     BUILD_PRODUCT=griffin \
     TARGET_DEVICE=griffin
+
+PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
+    ro.product.model \
+    ro.product.device \
+    ro.product.name \
+    ro.build.product \
+    ro.display.series
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \

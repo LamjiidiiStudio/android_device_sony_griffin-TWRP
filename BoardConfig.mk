@@ -23,8 +23,6 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-LOCAL_PATH := device/sony/griffin
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -96,6 +94,7 @@ BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_SUPER_PARTITION_SIZE := 12884901888
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
@@ -124,7 +123,7 @@ ALLOW_MISSING_DEPENDENCIES := true
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 BOARD_AVB_ENABLE := true
 TARGET_NO_KERNEL := false
-TARGET_NO_RECOVERY := true
+#TARGET_NO_RECOVERY := true
 BOARD_USES_RECOVERY_AS_BOOT := true
 
 # TWRP specific build flags
